@@ -81,9 +81,8 @@ p{margin-bottom:0}
 .hoje{font-size:12px}
 @media screen and (max-width:767px){.container{padding-left:10px;padding-right:10px}.hero{grid-column-gap:20px;grid-row-gap:20px}.ref{max-width:100%}}
 
-/* === VTurb wrapper — vídeo vertical 9:16 (aspectRatio 177.78) === */
-.vturb-wrap{position:relative;padding-top:177.78%;width:100%;max-width:400px;margin:0 auto}
-.vturb-wrap>vturb-smartplayer{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+/* === VTurb container — player gerencia próprio tamanho === */
+.video_vturb{width:100%;max-width:400px;margin:0 auto;padding-top:10px}
 
 /* === CSS bottles/up1.webflow.css — cards+garantia === */
 .section-potes-wrapper{background-color:#fff;padding-bottom:20px}
@@ -182,7 +181,7 @@ p{margin-bottom:0}
         </div>
 
         <!-- VTurb player -->
-        <div class="vturb-wrap">
+        <div class="video_vturb">
           <vturb-smartplayer id="vid-69d06e17f5c99568d7b05fff"></vturb-smartplayer>
         </div>
 
