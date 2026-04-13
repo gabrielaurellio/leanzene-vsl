@@ -130,6 +130,27 @@ p{margin-bottom:0}
 /* === Animação pulante === */
 .elemento-pulante{display:inline-block;animation:jump-bounce 4s ease-in-out infinite}
 @keyframes jump-bounce{0%,70%,100%{transform:translateY(0) scale(1,1)}75%{transform:translateY(0) scale(1.1,.9)}85%{transform:translateY(-10px) scale(.9,1.1)}90%{transform:translateY(0) scale(1.05,.95)}}
+
+/* === Urgency Banner (acima dos cards) === */
+.urgency-banner{background:#216E59;text-align:center;padding:28px 20px 0}
+.ub-title{font-size:28px;color:#fff;line-height:1.3;margin-bottom:8px;font-weight:800;font-family:Montserrat,sans-serif}
+.ub-subtitle{font-size:22px;color:#f5c518;font-weight:700;line-height:1.3;margin-bottom:10px;font-family:Montserrat,sans-serif}
+.ub-until{font-size:15px;font-weight:700;color:#fff;margin-bottom:10px}
+.ub-until span{color:#f5c518;text-decoration:underline}
+.ub-timer{font-size:64px;font-weight:900;color:#f5c518;line-height:1;margin:0;font-family:Montserrat,sans-serif}
+.ub-status-bar{background:#1a5747;margin-top:16px;padding:11px 20px;display:flex;justify-content:center;align-items:center;gap:22px;flex-wrap:wrap}
+.ub-status-item{display:flex;align-items:center;gap:7px;font-size:14px;color:#fff;font-weight:600;font-family:Montserrat,sans-serif}
+.ub-divider{color:rgba(255,255,255,.35);font-size:18px}
+@keyframes blink-dot{0%,100%{opacity:1}50%{opacity:0}}
+.blink-dot{display:inline-block;width:11px;height:11px;min-width:11px;background:#3fdf3f;border-radius:50%;animation:blink-dot 1.3s ease-in-out infinite;flex-shrink:0}
+@keyframes spin-hg{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.spin-hg{display:inline-block;animation:spin-hg 2s linear infinite;width:18px;height:18px;min-width:18px;flex-shrink:0;vertical-align:middle}
+/* Free shipping banner */
+.free-ship-banner{display:flex;align-items:center;gap:16px;background:#f0faf5;border:2px solid #216E59;border-radius:10px;padding:16px 24px;margin:24px auto 0;max-width:700px}
+.free-ship-icon{flex-shrink:0}
+.free-ship-text strong{font-size:16px;color:#216E59;display:block;margin-bottom:4px;font-family:Montserrat,sans-serif;font-weight:800}
+.free-ship-text p{font-size:13px;color:#444;margin:2px 0;line-height:1.5}
+@media(max-width:600px){.ub-title{font-size:20px}.ub-subtitle{font-size:17px}.ub-timer{font-size:46px}.ub-status-bar{gap:8px;flex-direction:column}.ub-divider{display:none}.free-ship-banner{flex-direction:column;text-align:center}}
 </style>
 </head>
 
@@ -208,8 +229,43 @@ p{margin-bottom:0}
 
 <!-- POTES — oculto até o pitch -->
 <div id="section-potes" style="display:none">
+
+  <!-- Banner de urgência -->
+  <div class="urgency-banner">
+    <div class="w-layout-blockcontainer container w-container">
+      <h2 class="ub-title">Choose Your Discounted Leanzene Package</h2>
+      <p class="ub-subtitle">With Our Special Time-Limited Offer!</p>
+      <p class="ub-until">Only Until <span id="ub-date"></span></p>
+      <div id="ub-timer" class="ub-timer">10:00</div>
+    </div>
+    <div class="ub-status-bar">
+      <span class="ub-status-item">
+        <span class="blink-dot"></span>
+        Sale Status: <strong>Live</strong>
+      </span>
+      <span class="ub-divider">|</span>
+      <span class="ub-status-item">
+        <svg class="spin-hg" viewBox="0 0 24 24" width="18" height="18" fill="#e53935" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5-4-4V4h8v3.5l-4 4z"/></svg>
+        Leanzene Bottles Remaining: <strong id="ub-bottles">139</strong>
+      </span>
+    </div>
+  </div>
+
   <div class="section-potes-wrapper">
     <div class="w-layout-blockcontainer container w-container">
+
+      <!-- Free shipping banner -->
+      <div class="free-ship-banner">
+        <div class="free-ship-icon">
+          <svg viewBox="0 0 24 24" width="52" height="52" fill="#216E59" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9 1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        </div>
+        <div class="free-ship-text">
+          <strong>FREE SHIPPING — UNLOCKED!</strong>
+          <p>Grab 6 bottles and skip the shipping fee. That's it.</p>
+          <p>Commit to the full treatment. We'll cover the rest.</p>
+        </div>
+      </div>
+
       <div class="potes-holder-grid">
 
         <!-- 1 BOTTLE — BASIC -->
@@ -454,6 +510,21 @@ p{margin-bottom:0}
 var s=document.createElement("script");
 s.src="https://scripts.converteai.net/c1941ea7-b030-4180-b1f0-5a9a49fb1f05/players/69d06e17f5c99568d7b05fff/v4/player.js";
 s.async=true;document.head.appendChild(s);
+</script>
+
+<!-- Urgency banner: countdown + bottles -->
+<script>
+(function(){
+  var secs=600,bottles=139,minBottles=9;
+  var timerEl=document.getElementById('ub-timer');
+  var bottlesEl=document.getElementById('ub-bottles');
+  var dateEl=document.getElementById('ub-date');
+  if(dateEl){var d=new Date();dateEl.textContent=String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0')+'/'+d.getFullYear();}
+  function tick(){if(timerEl){var m=Math.floor(secs/60),s=secs%60;timerEl.textContent=m+':'+(s<10?'0'+s:s);}if(secs>0)secs--;else secs=600;}
+  tick();setInterval(tick,1000);
+  function dropBottle(){if(bottles>minBottles){bottles--;if(bottlesEl)bottlesEl.textContent=bottles;setTimeout(dropBottle,4000+Math.random()*4000);}};
+  setTimeout(dropBottle,5000+Math.random()*3000);
+})();
 </script>
 
 <!-- Anti-Cookie Stuffing -->
